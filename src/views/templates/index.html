@@ -1,0 +1,35 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Traduzo - Trybe</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+
+<body>
+  <div class="container">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" class="header">
+    <div class="wrapper">
+      <form method="post">
+        <div class="text-input">
+          <textarea name="text-to-translate" spellcheck="false" class="from-text" placeholder="O que deseja traduzir"></textarea>
+          <textarea spellcheck="false" readonly disabled class="to-text">Requisito ainda não desenvolvido</textarea>
+        </div>
+        <ul class="controls">
+          <li class="row from">
+            <select name="translate-from">
+            </select>
+          </li>
+          <div>
+            <button class="tool" type="submit" formaction="/reverse">🔁</button>
+          </div>
+          <li class="row to">
+            <select name="translate-to">
+            </select>
+          </li>
+        </ul>
+      </div>
+      <button class="main-button" type="submit" formaction="/">Traduzir</button>
+    </form>
+  </div>
+</body>
+</html>

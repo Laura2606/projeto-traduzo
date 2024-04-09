@@ -1,0 +1,12 @@
+-r requirements.txt
+
+beautifulsoup4==4.12.2
+black==23.3.0
+flake8==4.0.1
+parsel==1.8.1
+pytest==7.3.1
+pytest-cov==4.1.0
+pytest-env==0.8.2
+pytest-json==0.4.0
+
+pytest-dependency@git+https://github.com/betrybe/pytest-dependency@984f9d7d083870d091e8862a9b9c33fdf815b8d9

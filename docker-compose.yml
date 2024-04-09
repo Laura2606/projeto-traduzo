@@ -1,0 +1,33 @@
+version: '3.4'
+
+services:
+  translate:
+    build:
+      # Aqui que faz funcionar nosso IF do Dockerfile
+      args:
+        - FLASK_ENV=dev
+      context: .
+    volumes:
+      - ./:/projeto-traduzo/.
+    ports:
+      - 8000:8000
+    depends_on:
+      - mongodb
+    networks:
+      - flask_net
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017
+      - FLASK_ENV=dev
+      - DB_NAME=db_traduzo
+  mongodb:
+    image: mongo:4.4.14
+    container_name: mongodb
+    restart: always
+    ports:
+      - 27017:27017
+    networks:
+      - flask_net
+
+networks:
+  flask_net:
+    driver: bridge
