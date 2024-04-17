@@ -13,3 +13,18 @@ class LanguageModel(AbstractModel):
             'name': str(self.data['name']),
             'acronym': self.data['acronym']
         }
+
+    @classmethod
+    def list_dicts(cls):
+        languages = cls._collection.find()
+        language_dicts = []
+
+        for language in languages:
+            language_dict = {
+                'name': language['name'],
+                'acronym': language['acronym']
+
+            }
+            language_dicts.append(language_dict)
+
+        return language_dicts
