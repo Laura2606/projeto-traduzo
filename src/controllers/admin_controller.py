@@ -1,7 +1,8 @@
 from bson import ObjectId
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, render_template
 from models.history_model import HistoryModel
 from models.user_model import UserModel
+# from deep_translator import GoogleTranslator
 
 admin_controller = Blueprint("admin_controller", __name__)
 
@@ -19,6 +20,12 @@ def history_delete(id):
     history = HistoryModel.find_one({"_id": ObjectId(id)})
     if not history:
         return jsonify({"error": "History not found"}), 404
+
     else:
         history.delete()
         return "", 204
+
+
+@admin_controller.route("/", methods=["GET", "POST"])
+def index():
+    return render_template("index.html")
