@@ -43,6 +43,34 @@ def home():
       translate_to=translate_to,
       translated=translated
     )
+
+
+@app.route('/reverse', methods=['POST'])
+def reverse_translation():
+    text_to_translate = request.form.get('text-to-translate')
+    translate_from = request.form.get("translate-from")
+    translate_to = request.form.get("translate-to")
+
+    reversed_translation = GoogleTranslator(
+        source=translate_from,
+        target=translate_to
+    ).translate(
+        text_to_translate
+    )
+
+    languages = LanguageModel.list_dicts()
+
+    return render_template(
+        'index.html',
+        languages=languages,
+        text_to_translate=reversed_translation,
+        translated=text_to_translate,
+        translate_from=translate_to,
+        translate_to=translate_from
+
+
+
+    )
 #     return render_template(
 #         'index.html',
 #         languages=languages,
