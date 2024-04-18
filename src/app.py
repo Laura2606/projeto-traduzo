@@ -20,9 +20,9 @@ def home():
     return render_template(
         'index.html',
         languages=languages,
-        text_to_translate='O que deseja traduzir?',
-        translate_from='pt',
-        translate_to='en',
+        text_to_translate="O que deseja traduzir?",
+        translate_from="pt",
+        translate_to="en",
         translated="What do you want to translate?"
                           )
 

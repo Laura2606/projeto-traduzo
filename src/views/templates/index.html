@@ -13,8 +13,8 @@
       <form method="post">
         <div class="text-input">
           <textarea name="text-to-translate" spellcheck="false" class="from-text"
-            placeholder="O que deseja traduzi?">{{ request.form.get('text-to-translate', '') }}</textarea>
-          <textarea spellcheck="false" readonly disabled class="to-text">Requisito ainda não desenvolvido</textarea>
+            placeholder="{{ 'text-to-translate' }}">{{ text_to_translate }}</textarea>
+          <textarea spellcheck="false" readonly disabled class="to-text">{{ translated }}</textarea>
         </div>
         <ul class="controls">
           <li class="row from">
