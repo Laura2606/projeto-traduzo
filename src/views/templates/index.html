@@ -1,4 +1,5 @@
 <html>
+
 <head>
   <meta charset="UTF-8">
   <title>Traduzo - Trybe</title>
@@ -7,16 +8,23 @@
 
 <body>
   <div class="container">
-      <img src="{{ url_for('static', filename='images/logo.png') }}" class="header">
+    <img src="{{ url_for('static', filename='images/logo.png') }}" class="header">
     <div class="wrapper">
       <form method="post">
         <div class="text-input">
-          <textarea name="text-to-translate" spellcheck="false" class="from-text" placeholder="O que deseja traduzir"></textarea>
+          <textarea name="text-to-translate" spellcheck="false" class="from-text"
+            placeholder="O que deseja traduzi?">{{ request.form.get('text-to-translate', '') }}</textarea>
           <textarea spellcheck="false" readonly disabled class="to-text">Requisito ainda não desenvolvido</textarea>
         </div>
         <ul class="controls">
           <li class="row from">
             <select name="translate-from">
+              {% for language in languages %}
+              <option value="{{ language['acronym']}}" {% if language['acronym']==translate_from %}selected{% endif %}>
+                {{ language['name'].upper() }}
+
+              </option>
+              {% endfor %}
             </select>
           </li>
           <div>
@@ -24,12 +32,18 @@
           </div>
           <li class="row to">
             <select name="translate-to">
+              {% for language in languages %}
+              <option value="{{language['acronym']}}" {% if language['acronym']==translate_to %}selected{% endif %}>
+                {{ language['name'].upper() }}
+              </option>
+              {% endfor %}
             </select>
           </li>
         </ul>
-      </div>
-      <button class="main-button" type="submit" formaction="/">Traduzir</button>
+    </div>
+    <button class="main-button" type="submit" formaction="/">Traduzir</button>
     </form>
   </div>
 </body>
+
 </html>
